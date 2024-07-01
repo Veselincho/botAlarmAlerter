@@ -1,0 +1,6 @@
+# Ignore .env file
+.env
+.env.local
+
+# Dependency directories
+node_modules/

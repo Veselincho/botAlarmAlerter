@@ -1,0 +1,21 @@
+{
+  "name": "botsoundalert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "twitterBitFaster.js",
+  "type": "commonjs",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2",
+    "play-sound": "^1.1.6",
+    "playwright": "^1.45.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.14.9"
+  }
+}
