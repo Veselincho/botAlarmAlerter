@@ -1,14 +1,19 @@
 const { chromium } = require('playwright');
 const player = require('play-sound')();
-require('dotenv').config();
-const path = process.env.songPath;
-const xLink = process.env.link
-const selector = process.env.waitingSelector
+const dotenv = require('dotenv')
+const { URLs } = require('./twitterUrls.js');
+dotenv.config();
 
 
-async function playAlertSound() {
-    player.play(path, function(err) {
-        if (err) console.log(`Could not play sound: ${err}`);
+// If 
+function playAlertSound() {
+    player.play(URLs.songPath, function(err) {
+        if (err) {
+            console.log(`Could not play sound: ${err.code} - ${err.message}`);
+            if (err.code === 1) {
+                console.log('Error Code 1: General error or file not found.');
+            }
+        }
     });
 }
 
@@ -21,19 +26,19 @@ async function initBrowser() {
 
 async function getCount(page) {
     // Navigate to the desired page
-    await page.goto(xLink);
+    await page.goto(URLs.link);
 
     // Wait for the element to appear and extract its text content
-    await page.waitForSelector(selector);
-    const postCount = await page.$eval(selector, element => element.textContent);
+    await page.waitForSelector(URLs.selector);
+    const postCount = await page.$eval(URLs.selector, element => element.textContent);
 
 
     let numVar = parseInt(postCount);
     console.log(numVar);
 
-    if (numVar != 9112) {
-        await playAlertSound();
-        setTimeout(process.exit(), 3000) // Terminate the Node.js process
+    if (numVar != 927) {
+        playAlertSound();
+        setTimeout(process.exit(), 1000) // Terminate the Node.js process
     }
 }
 
