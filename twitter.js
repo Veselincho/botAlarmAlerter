@@ -1,9 +1,8 @@
 const { chromium } = require('playwright');
+// Do not remove player - looks unusable but it`s not
 const player = require('play-sound')();
-const dotenv = require('dotenv')
 const { URLs } = require('./twitterUrls.js');
 const {playAlertSoundd} = require('./tPlayer.js')
-dotenv.config();
 
 const userAgents = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
