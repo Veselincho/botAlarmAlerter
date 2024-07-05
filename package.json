@@ -2,7 +2,7 @@
   "name": "botsoundalert",
   "version": "1.0.0",
   "description": "",
-  "main": "twitterBitFaster.js",
+  "main": "twitter.js",
   "type": "commonjs",
   "scripts": {},
   "keywords": [],
