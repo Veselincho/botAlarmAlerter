@@ -2,6 +2,7 @@ const { chromium } = require('playwright');
 const player = require('play-sound')();
 const dotenv = require('dotenv')
 const { URLs } = require('./twitterUrls.js');
+const {playAlertSoundd} = require('./tPlayer.js')
 dotenv.config();
 
 const userAgents = [
@@ -12,19 +13,6 @@ const userAgents = [
 ];
 
 const getRandomUserAgent = () => userAgents[Math.floor(Math.random() * userAgents.length)];
-
-
-// If 
-function playAlertSound() {
-    player.play(URLs.songPath, function(err) {
-        if (err) {
-            console.log(`Could not play sound: ${err.code} - ${err.message}`);
-            if (err.code === 1) {
-                console.log('Error Code 1: General error or file not found.');
-            }
-        }
-    });
-}
 
 async function initBrowser() {
     const browser = await chromium.launch({ headless: true }); // Launch browser
@@ -46,23 +34,25 @@ async function getCount(page) {
 
     let numVar = parseInt(postCount);
     console.log(numVar);
-
-    if (numVar != 985) {
-        playAlertSound();
-        setTimeout(process.exit(), 1000) // Terminate the Node.js process
+    
+    if (numVar != 994) {
+        playAlertSoundd()
+        setTimeout(process.exit(), 5000) // Terminate the Node.js process
     }
 }
 
-function getRandomDelay(minSeconds = 60, maxSeconds = 62) {
+function getRandomDelay(minSeconds = 1, maxSeconds = 20) {
     const minMilliseconds = minSeconds * 1000;
     const maxMilliseconds = maxSeconds * 1000;
     return Math.floor(Math.random() * (maxMilliseconds - minMilliseconds + 1)) + minMilliseconds;
 }
 
-// Example usage:
 const delay = getRandomDelay();
 
+
 (async () => {
+    //Since I can't understand why the player requires to firstly start the mp3 to recognize it whenever it reaches the statement to execute it - I just add an initial run of it
+    playAlertSoundd()
     const { browser, context, page } = await initBrowser();
 
     // Use a named function for setInterval to allow access to the page
