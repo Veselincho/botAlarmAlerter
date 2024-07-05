@@ -36,11 +36,20 @@ async function getCount(page) {
     let numVar = parseInt(postCount);
     console.log(numVar);
 
-    if (numVar != 927) {
+    if (numVar != 985) {
         playAlertSound();
         setTimeout(process.exit(), 1000) // Terminate the Node.js process
     }
 }
+
+function getRandomDelay(minSeconds = 2, maxSeconds = 3) {
+    const minMilliseconds = minSeconds * 1000;
+    const maxMilliseconds = maxSeconds * 1000;
+    return Math.floor(Math.random() * (maxMilliseconds - minMilliseconds + 1)) + minMilliseconds;
+}
+
+// Example usage:
+const delay = getRandomDelay();
 
 (async () => {
     const { browser, context, page } = await initBrowser();
@@ -55,5 +64,5 @@ async function getCount(page) {
             await context.close();
             await browser.close();
         }
-    }, 2000);
+    }, delay);
 })();
