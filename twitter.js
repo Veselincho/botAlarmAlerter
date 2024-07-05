@@ -51,7 +51,7 @@ const delay = getRandomDelay();
 
 
 (async () => {
-    //Since I can't understand why the player requires to firstly start the mp3 to recognize it whenever it reaches the statement to execute it - I just add an initial run of it
+    //Since I can't understand why the player requires to firstly start the mp3 to recognize it whenever it reaches the condition to execute it - I just add an initial run of it
     playAlertSoundd()
     const { browser, context, page } = await initBrowser();
 
