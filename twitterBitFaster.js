@@ -53,7 +53,7 @@ async function getCount(page) {
     }
 }
 
-function getRandomDelay(minSeconds = 3, maxSeconds = 6) {
+function getRandomDelay(minSeconds = 60, maxSeconds = 62) {
     const minMilliseconds = minSeconds * 1000;
     const maxMilliseconds = maxSeconds * 1000;
     return Math.floor(Math.random() * (maxMilliseconds - minMilliseconds + 1)) + minMilliseconds;
